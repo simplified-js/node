@@ -1,0 +1,61 @@
+{
+  "name": "lib",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "vitest",
+    "lint": "eslint --fix . && prettier --write .",
+    "prepack": "npm run build",
+    "prepare": "husky",
+    "release": "changelogen --publish --push --release",
+    "test": "vitest run --coverage"
+  },
+  "lint-staged": {
+    "*.{json,md}": [
+      "prettier --write"
+    ],
+    "*.{mjs,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.ts": [
+      "vitest related --run"
+    ]
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-organize-imports",
+      "prettier-plugin-packagejson"
+    ],
+    "proseWrap": "always"
+  },
+  "devDependencies": {
+    "@types/node": "^22.8.6",
+    "@vitest/coverage-v8": "^2.1.4",
+    "changelogen": "^0.5.7",
+    "eslint": "^9.13.0",
+    "eslint-config-unjs": "^0.4.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-packagejson": "^2.5.3",
+    "tsx": "^4.19.2",
+    "typescript": "~5.5",
+    "unbuild": "^2.0.0",
+    "vitest": "^2.1.4"
+  }
+}
