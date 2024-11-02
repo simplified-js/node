@@ -2,8 +2,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "tsx .scripts/sync.ts --check",
-    "sync": "tsx .scripts/sync.ts && prettier --write ."
+    "format": "prettier --write .",
+    "sync": "tsx .scripts/sync.ts && npm run format",
+    "test": "tsx .scripts/sync.ts --check && prettier --check ."
   },
   "prettier": {
     "plugins": [
